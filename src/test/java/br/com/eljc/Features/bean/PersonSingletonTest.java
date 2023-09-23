@@ -3,26 +3,23 @@ package br.com.eljc.Features.bean;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
-import org.springframework.web.client.RestTemplate;
 
-import br.com.eljc.Features.model.Person;
-
-class PersonSingletonTest {
+@SpringBootTest
+public class PersonSingletonTest {
+	
+	private Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 	
 	private static final String NAME = "John Smith";
 	private static final String NAME2 = "Camara";
 	
 	@Autowired
-	RestTemplate restTemplate;
-	
-	@Autowired
-	private PersonSingleton personSingleton = new PersonSingleton();
-	
-	@Autowired
 	private ApplicationContext context;
-
+	
 	@Test
 	void givenSingletonScope_whenSetName_thenEqualNames() {
 		/*
@@ -37,14 +34,20 @@ class PersonSingletonTest {
 		} 
 	    */
 	    
-		personSingleton.personSingleton().setName(NAME);
+		
 
-	    Person personSingletonA = personSingleton.personSingleton();
-	    Person personSingletonB = personSingleton.personSingleton();;
-
-	    personSingletonA.setName(NAME2);
-	   // personSingletonB.setName(NAME2);
-	    assertEquals(NAME2, personSingleton.personSingleton().getName());
+	    PersonSingleton personSingleton = context.getBean(PersonSingleton.class);
+	    
+	    personSingleton.setMessage(NAME);
+		
+	    String msgA= personSingleton.getMessage();
+	    String msgB = personSingleton.getMessage();
+	    
+	    LOGGER.info("Message A: {}", msgA);
+	    personSingleton.setMessage(NAME2);	
+	    LOGGER.info("Message B: {}", msgB);
+	    
+	    assertEquals(msgA, msgB);
 	    
 	}
 

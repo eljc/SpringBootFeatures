@@ -21,6 +21,8 @@ public class GreetingSingletonTest {
 		greeting2.setMessage("First message");
 		greeting1.setMessage("What up?");
 		
+		System.out.println("Running test with Singleton");
+		
 		System.out.println("Greeting 1: "+greeting1.getMessage());
 		
 		
@@ -33,6 +35,8 @@ public class GreetingSingletonTest {
 	void testScopePrototype() {
 		GreetingPrototype greetingPrototype1 = context.getBean(GreetingPrototype.class);
 		GreetingPrototype greetingPrototype2 = context.getBean(GreetingPrototype.class);
+		
+		System.out.println("\nRunning test with Prototype");
 		
 		greetingPrototype2.setMessage("First message");
 		greetingPrototype1.setMessage("What up?");

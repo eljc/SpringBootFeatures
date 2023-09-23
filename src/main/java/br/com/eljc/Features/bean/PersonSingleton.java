@@ -1,16 +1,18 @@
 package br.com.eljc.Features.bean;
 
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Scope;
-
-import br.com.eljc.Features.model.Person;
-
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+@Component
+@Qualifier("sigle")
 public class PersonSingleton {
-
-	@Bean
-	@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
-	public Person personSingleton() {
-	    return new Person();
+	
+	private String message;
+	
+	public String getMessage() {
+	    return message;	   	   
+	}
+	
+	public void setMessage(String message) {
+		this.message = message;
 	}
 }
