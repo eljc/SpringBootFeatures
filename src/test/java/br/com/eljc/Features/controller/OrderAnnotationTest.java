@@ -25,13 +25,13 @@ public class OrderAnnotationTest {
 	
 	@Test
 	@Order(1)
-	void autowireWorked() {
+	void first() {
 		assertNotNull(mvc);
 	}
 	
 	@Test
 	@Order(3)
-	void testHelloWithoutName() throws Exception{
+	void third() throws Exception{
 		mvc.perform(get("/hello").accept(MediaType.TEXT_HTML))
 		.andExpect(status().isOk())
 		.andExpect(view().name("hello"))
@@ -40,7 +40,7 @@ public class OrderAnnotationTest {
 	
 	@Test
 	@Order(2)
-	void testHelloWithName() throws Exception{
+	void second() throws Exception{
 		mvc.perform(get("/hello").param("name", "Camara").accept(MediaType.TEXT_HTML))
 		.andExpect(status().isOk())
 		.andExpect(view().name("hello"))
