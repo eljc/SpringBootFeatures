@@ -38,13 +38,13 @@ class FeaturesApplicationTests {
 		*/
 		
 	}
-	
+	/*
 	@Test @Disabled
 	void noBeanException() {
 		assertThrows(NoSuchBeanDefinitionException.class, 
 				() -> context.getBean(Greeting.class));
 	}
-	
+	*/
 
 
 }

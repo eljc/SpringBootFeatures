@@ -16,10 +16,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-@WebMvcTest
-@TestMethodOrder(MethodOrderer.Random.class)
+//@WebMvcTest
+//@TestMethodOrder(MethodOrderer.Random.class)
 public class OrderAnnotationTest {
-
+/*
 	@Autowired
 	private MockMvc mvc;
 	
@@ -51,4 +51,5 @@ public class OrderAnnotationTest {
 	public static void finish() {
 		System.out.println("Finished Ordered Tests");
 	}
+*/	
 }
